@@ -1,9 +1,9 @@
-import { createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
 import signIn from './signIn'
 import signUp from './signUp'
 
-export default createBottomTabNavigator({
+export default createStackNavigator({
     signIn:{
         screen: signIn
     },
@@ -11,4 +11,8 @@ export default createBottomTabNavigator({
     signUp:{
         screen: signUp
     },
+},{
+    defaultNavigationOptions: {
+        header: null,
+    }
 });

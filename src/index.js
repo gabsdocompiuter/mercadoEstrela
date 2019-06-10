@@ -1,12 +1,18 @@
 import { createStackNavigator, createAppContainer} from 'react-navigation';
 
-import Login from './screens/login'
+import Caderno from './screens/client/caderno';
+import Login from './screens/login';
+
 
 const AppNavigator = createStackNavigator({
-    Login:{
+    CadernoClient: {
+        screen: Caderno
+    },
+
+    Login: {
         screen: Login
     }
-},{
+}, {
     defaultNavigationOptions: {
         header: null
     }

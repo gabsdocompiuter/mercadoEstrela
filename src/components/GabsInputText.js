@@ -10,6 +10,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import appStyle from '../appStyle';
 
 const componentProps = {
+    icon: '',
+    keyboardType: 'default',
     fontColor: appStyle.colors.fontColor,
     placeholderColor: appStyle.colors.placeholderColor,
     password: false
@@ -19,7 +21,31 @@ export default class GabsInputText extends Component {
     constructor(props){
         super(props);
 
-        componentProps.password = this.props.type == 'lock';
+        componentProps.password = this.props.type == 'password';
+        componentProps.keyboardType = 'default';
+
+        switch(this.props.type){
+            case 'cpf':
+                componentProps.icon = 'id-badge';
+                break;
+            case 'email':
+                componentProps.icon = 'at';
+                componentProps.keyboardType = 'email-address';
+                break;
+            case 'name':
+                componentProps.icon = 'address-card';
+                break;
+            case 'username':
+                componentProps.icon = 'user';
+                break;
+            case 'password':
+                componentProps.icon = 'lock';
+                break;
+            default:
+                componentProps.icon = 'info';
+                break;
+        }
+
     }
 
     render(){
@@ -31,8 +57,8 @@ export default class GabsInputText extends Component {
                 <View style={styles.viewRow}>
                     <View style={styles.icon}>
                         <Icon
-                            name={this.props.type}
                             size={25}
+                            name={componentProps.icon}
                             color={componentProps.fontColor}
                         />
                     </View>
@@ -44,6 +70,7 @@ export default class GabsInputText extends Component {
                         placeholder={this.props.placeholder}
                         placeholderTextColor={componentProps.placeholderColor}
                         secureTextEntry={componentProps.password}
+                        keyboardType={componentProps.keyboardType}
                     ></TextInput>
                 </View>
                 <View style={styles.line}></View>
@@ -58,7 +85,7 @@ const styles = StyleSheet.create({
     },
 
     icon: {
-        width: 25,
+        width: 30,
         alignItems: 'center',
     },
     
@@ -76,7 +103,7 @@ const styles = StyleSheet.create({
 
     line: {
         height: 1,
-        marginTop: -4,
+        // marginTop: -3,
         backgroundColor: (componentProps.fontColor)
     }
 });

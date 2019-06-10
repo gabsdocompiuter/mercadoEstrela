@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
+    Dimensions,
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
@@ -11,13 +12,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import appStyle from '../../appStyle';
 import GabsInputText from '../../components/GabsInputText';
 import GabsButton from '../../components/GabsButton';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default class Login extends Component{
-
-    static navigationOptions = {
-        title: 'LOGIN'
-    }
 
     render(){
         return(
@@ -34,46 +32,50 @@ export default class Login extends Component{
                     <Text style={[
                         appStyle.style.text,
                         styles.logoText
-                    ]}>Mercado Estrela</Text>
+                    ]}>{appStyle.configs.empName}</Text>
                 </View>
 
-                <View style={styles.loginArea}>
-                    <GabsInputText
-                        type='user'
-                        placeholder='Usuário/CPF'
-                        style={styles.input}
-                    ></GabsInputText>
-                    
-                    <GabsInputText
-                        type='lock'
-                        placeholder='Senha'
-                        style={styles.input}
-                    ></GabsInputText>
+                <ScrollView>
+                    <View style={styles.loginArea}>
+                        <GabsInputText
+                            type='username'
+                            placeholder='Usuário/CPF'
+                            style={styles.input}
+                        ></GabsInputText>
+                        
+                        <GabsInputText
+                            type='password'
+                            placeholder='Senha'
+                            style={styles.input}
+                        ></GabsInputText>
 
-                    <View style={styles.buttonArea}>
-                        <GabsButton
-                            style={styles.button}
-                            text='Login'
-                            inverted={true}                        
-                        />
-                        <GabsButton
-                            style={styles.button}
-                            text='Cadastrar-se'
-                            onPress={() => this.props.navigation.navigate('signUp')}
-                        />
+                        <View style={styles.buttonArea}>
+                            <GabsButton
+                                style={styles.button}
+                                text='Login'
+                                inverted={true}                        
+                            />
+                            <GabsButton
+                                style={styles.button}
+                                text='Cadastrar-se'
+                                onPress={() => this.props.navigation.navigate('signUp')}
+                            />
+                        </View>
+
+                        <TouchableOpacity>
+                            <Text style={[
+                                appStyle.style.text,
+                                styles.forgotPassword
+                            ]}>Esqueceu sua senha?</Text>
+                        </TouchableOpacity>
                     </View>
-
-                    <TouchableOpacity>
-                        <Text style={[
-                            appStyle.style.text,
-                            styles.forgotPassword
-                        ]}>Esqueceu sua senha?</Text>
-                    </TouchableOpacity>
-                </View>
+                </ScrollView>
             </View>
         );
     }
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     container: {
@@ -96,12 +98,14 @@ const styles = StyleSheet.create({
     },
     
     loginArea: {
+        width: (windowWidth),
         marginTop: 50,
         justifyContent: 'center',
         alignItems: 'center'
     },
     
     input: {
+        width: 270,
         margin: 10,
     },
 
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        margin:10,
+        margin: 5,
     },
 
     forgotPassword: {

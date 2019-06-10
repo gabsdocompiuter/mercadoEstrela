@@ -3,6 +3,10 @@ import {
 } from 'react-native';
 
 const appStyle = {
+    configs: {
+        empName: 'Mini Mercado Estrela'
+    },
+
     colors: {
         backgroundColor: '#2e382f',
         fontColor: '#FFF',

@@ -16,10 +16,7 @@ export default class Caderno extends Component{
 
     render(){
         return(
-            <View style={[
-                dfStyle.container,
-                styles.container
-            ]}>
+            <View style={dfStyle.container}>
                 <View style={styles.header}>
                     <View style={styles.logo}>
                         <Icon

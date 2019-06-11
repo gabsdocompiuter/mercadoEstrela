@@ -9,17 +9,17 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import appStyle from '../../appStyle';
 import GabsInputText from '../../components/GabsInputText';
 import GabsButton from '../../components/GabsButton';
-
+import appStyle from '../../appStyle';
+const dfStyle = appStyle.style;
 
 export default class Cadastro extends Component{
 
     render(){
         return(
             <View style={[
-                appStyle.style.container,
+                dfStyle.container,
                 styles.container
             ]}>
                 <View style={styles.logo}>
@@ -29,13 +29,12 @@ export default class Cadastro extends Component{
                         color='#FFF'
                     />
                     <Text style={[
-                        appStyle.style.text,
+                        dfStyle.text,
                         styles.logoText
                     ]}>{appStyle.configs.empName}</Text>
                 </View>
 
                 <ScrollView>
-
                     <View style={styles.inputArea}>
                         <GabsInputText
                             type='name'
@@ -81,6 +80,12 @@ export default class Cadastro extends Component{
                         </View>
                     </View>
                 </ScrollView>
+
+                <View style={dfStyle.footer}>
+                    <View style={dfStyle.devInfo}>
+                        <Text style={dfStyle.text}>Aplicativo desenvolvido por Gabriel Monteiro</Text>
+                    </View>
+                </View>
             </View>
         );
     }
@@ -98,13 +103,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
 
-        marginTop: 50,
+        marginTop: 25,
     },
     
     logoText: {
+        ...dfStyle.text,
         marginLeft: 10,
         fontSize: 25,
-        color: (appStyle.colors.fontColor),
         width: 100,
     },
     
@@ -127,11 +132,5 @@ const styles = StyleSheet.create({
 
     button: {
         margin: 5,
-    },
-
-    forgotPassword: {
-        marginBottom: 25,
-        fontSize: 14,
-        color: (appStyle.colors.fontColor),
     },
 });

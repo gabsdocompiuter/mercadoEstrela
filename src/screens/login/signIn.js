@@ -3,24 +3,24 @@ import {
     View,
     Text,
     Dimensions,
+    ScrollView,
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import appStyle from '../../appStyle';
 import GabsInputText from '../../components/GabsInputText';
 import GabsButton from '../../components/GabsButton';
-import { ScrollView } from 'react-native-gesture-handler';
-
+import appStyle from '../../appStyle';
+const dfStyle = appStyle.style;
 
 export default class Login extends Component{
 
     render(){
         return(
             <View style={[
-                appStyle.style.container,
+                dfStyle.container,
                 styles.container
             ]}>
                 <View style={styles.logo}>
@@ -29,10 +29,7 @@ export default class Login extends Component{
                         size={75}
                         color='#FFF'
                     />
-                    <Text style={[
-                        appStyle.style.text,
-                        styles.logoText
-                    ]}>{appStyle.configs.empName}</Text>
+                    <Text style={styles.logoText}>{appStyle.configs.empName}</Text>
                 </View>
 
                 <ScrollView>
@@ -63,13 +60,17 @@ export default class Login extends Component{
                         </View>
 
                         <TouchableOpacity>
-                            <Text style={[
-                                appStyle.style.text,
-                                styles.forgotPassword
-                            ]}>Esqueceu sua senha?</Text>
+                            <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
                         </TouchableOpacity>
+
                     </View>
                 </ScrollView>
+
+                <View style={dfStyle.footer}>
+                    <View style={dfStyle.devInfo}>
+                        <Text style={dfStyle.text}>Aplicativo desenvolvido por Gabriel Monteiro</Text>
+                    </View>
+                </View>
             </View>
         );
     }
@@ -91,9 +92,9 @@ const styles = StyleSheet.create({
     },
     
     logoText: {
+        ...dfStyle.text,
         marginLeft: 10,
         fontSize: 25,
-        color: (appStyle.colors.fontColor),
         width: 100,
     },
     
@@ -118,8 +119,9 @@ const styles = StyleSheet.create({
     },
 
     forgotPassword: {
+        ...dfStyle.text,
         marginBottom: 25,
         fontSize: 14,
-        color: (appStyle.colors.fontColor),
     },
+
 });

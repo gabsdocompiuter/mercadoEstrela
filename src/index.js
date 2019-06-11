@@ -5,13 +5,13 @@ import Login from './screens/login';
 
 
 const AppNavigator = createStackNavigator({
-    CadernoClient: {
-        screen: Caderno
-    },
-
     Login: {
         screen: Login
-    }
+    },
+    
+    Caderno: {
+        screen: Caderno
+    },
 }, {
     defaultNavigationOptions: {
         header: null

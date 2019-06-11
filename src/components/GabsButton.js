@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import appStyle from '../appStyle';
+const dfStyle = appStyle.style;
 
 const componentProps = {}
 
@@ -41,7 +42,6 @@ export default class GabsInputText extends Component {
                         }
                     ]}>
                         <Text style={[
-                            appStyle.style.text,
                             styles.buttonText,
                             {
                                 color: (componentProps.fontColor),
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
+        ...dfStyle.text,
         fontSize: 20,
     }
 });

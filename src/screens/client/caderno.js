@@ -28,15 +28,9 @@ export default class Caderno extends Component{
                             color='#FFF'
                         />
                         <View style={styles.logoText}>
-                            <Text style={[
-                                dfStyle.text,
-                                styles.empName
-                            ]}>{appStyle.configs.empName}</Text>
+                            <Text style={styles.empName}>{appStyle.configs.empName}</Text>
 
-                            <Text style={[
-                                dfStyle.text,
-                                styles.infoProgram
-                            ]}>Controle de Caderno</Text>
+                            <Text style={styles.infoProgram}>Controle de Caderno</Text>
                         </View>
                     </View>
                 </View>
@@ -83,17 +77,17 @@ export default class Caderno extends Component{
                 <View style={styles.footer}>
                     <View style={styles.info}>
                         <View>
-                            <Text style={[dfStyle.text, styles.infoTitle]}>Última Compra:</Text>
+                            <Text style={styles.infoTitle}>Última Compra:</Text>
                             <Text style={dfStyle.text}>30/04/2018</Text>
                             
-                            <Text style={[dfStyle.text, styles.infoTitle]}>Último pagamento:</Text>
+                            <Text style={styles.infoTitle}>Último pagamento:</Text>
                             <Text style={dfStyle.text}>22/03/2018</Text>
                         </View>
                         <View style={styles.infoValores}>
-                            <Text style={[dfStyle.text, styles.infoTitle]}>Fatura Atual:</Text>
+                            <Text style={styles.infoTitle}>Fatura Atual:</Text>
                             <Text style={dfStyle.text}>R$ 35,93</Text>
 
-                            <Text style={[dfStyle.text, styles.infoTitle]}>Última fatura:</Text>
+                            <Text style={styles.infoTitle}>Última fatura:</Text>
                             <Text style={dfStyle.text}>R$ 245,81</Text>
                         </View>
                     </View>
@@ -122,14 +116,17 @@ const styles = StyleSheet.create({
     },
 
     logoText: {
+        ...dfStyle.text,
         marginLeft: 10,
     },
     
     empName: {
+        ...dfStyle.text,
         fontSize: 25,
     },
     
     infoProgram: {
+        ...dfStyle.text,
         fontSize: 20,
         marginTop: -8,
     },
@@ -154,8 +151,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
 
-        fontSize: 25,
-        
         flexDirection: 'row',
     },
     
@@ -165,6 +160,7 @@ const styles = StyleSheet.create({
     },
 
     infoTitle: {
+        ...dfStyle.text,
         fontWeight: 'bold',
         marginTop: 5
     },

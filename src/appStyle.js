@@ -22,7 +22,18 @@ const style = StyleSheet.create({
         flex: 1,
         fontFamily: 'sans-serif-light',
         backgroundColor: '#2e382f',
+    },
+
+    footer: {
+        justifyContent: 'flex-end',
+    },
+
+    devInfo: {
+        ...this.text,
+        marginBottom: 10,
+        alignItems: 'center',
     }
+    
 });
 
 const appStyle = {

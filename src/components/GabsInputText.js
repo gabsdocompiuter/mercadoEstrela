@@ -8,6 +8,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import appStyle from '../appStyle';
+const dfStyle = appStyle.style;
 
 const componentProps = {
     icon: '',
@@ -63,10 +64,7 @@ export default class GabsInputText extends Component {
                         />
                     </View>
                     <TextInput
-                        style={[
-                            appStyle.style.text,
-                            styles.textInput,
-                        ]}
+                        style={styles.textInput}
                         placeholder={this.props.placeholder}
                         placeholderTextColor={componentProps.placeholderColor}
                         secureTextEntry={componentProps.password}
@@ -95,15 +93,14 @@ const styles = StyleSheet.create({
     },
 
     textInput: {
+        ...dfStyle.text,     
         flex: 1,
         fontSize: 19,
-        color: (componentProps.fontColor),
         marginBottom: -5,
     },
 
     line: {
         height: 1,
-        // marginTop: -3,
         backgroundColor: (componentProps.fontColor)
     }
 });

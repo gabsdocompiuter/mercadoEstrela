@@ -4,14 +4,29 @@ import {
     Text,
     Image,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 
 import EmpHeader from '../../components/EmpHeader';
 import appStyle from '../../appStyle';
 const dfStyle = appStyle.style;
 
+const info = {
+    footerHeight: 50
+};
+
 export default class Fluxo extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
+    setFooterSize(height){
+        info.footerHeight = height;
+        alert('2 ' +info.footerHeight)
+    }
+
     render(){
         return(
             <View style={dfStyle.container}>
@@ -21,7 +36,10 @@ export default class Fluxo extends Component {
 
                 </ScrollView>
 
-                <View style={styles.footer}>
+                <View
+                    style={styles.footer}
+                    onLayout={((event) => this.setFooterSize(event.nativeEvent.layout.height))}
+                >
                     <View style={styles.info}>
                         <View>
                             <Text style={styles.infoTitle}>Produto mais vendido:</Text>
@@ -36,6 +54,17 @@ export default class Fluxo extends Component {
                         <Text style={dfStyle.text}>Aplicativo desenvolvido por Gabriel Monteiro</Text>
                     </View>
                 </View>
+
+                {/* { && <Text>ada</Text>} */}
+            
+                <TouchableHighlight style={[
+                    styles.addItem,
+                    {
+                        bottom: (info.footerHeight && alert('1 ' + info.footerHeight)),
+                    }
+                ]}>
+                    <Text>...</Text>
+                </TouchableHighlight>
             </View>
         )
     }
@@ -43,7 +72,6 @@ export default class Fluxo extends Component {
 
 const styles = StyleSheet.create({
     
-
     center: {
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
         padding: 10,
@@ -77,5 +105,18 @@ const styles = StyleSheet.create({
     devinfo: {
         marginBottom: 10,
         alignItems: 'center',
-    }
+    },
+
+    addItem: {
+        position: 'absolute',
+
+        right: 10,
+        // bottom: (info.footerHeight  && alert(3)),
+        width: 50,
+        height: 50,
+
+        borderRadius: 100,
+
+        backgroundColor: 'red',
+    },
 });

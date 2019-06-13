@@ -6,31 +6,18 @@ import {
     StyleSheet,
 } from 'react-native';
 
+import EmpHeader from '../../components/EmpHeader';
 import ItemCaderno from '../../components/ItemCaderno';
 import appStyle from '../../appStyle';
 const dfStyle = appStyle.style;
 
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Caderno extends Component{
 
     render(){
         return(
             <View style={dfStyle.container}>
-                <View style={styles.header}>
-                    <View style={styles.logo}>
-                        <Icon
-                            name='star'
-                            size={50}
-                            color='#FFF'
-                        />
-                        <View style={styles.logoText}>
-                            <Text style={styles.empName}>{appStyle.configs.empName}</Text>
-
-                            <Text style={styles.infoProgram}>Controle de Caderno</Text>
-                        </View>
-                    </View>
-                </View>
+                {/* <EmpHeader navigation={this.props.navigation} /> */}
 
                 <ScrollView style={styles.center}>
                     <ItemCaderno
@@ -88,9 +75,6 @@ export default class Caderno extends Component{
                             <Text style={dfStyle.text}>R$ 245,81</Text>
                         </View>
                     </View>
-                    <View style={styles.devinfo}>
-                        <Text style={dfStyle.text}>Aplicativo desenvolvido por Gabriel Monteiro</Text>
-                    </View>
                 </View>
             </View>
         );
@@ -99,35 +83,6 @@ export default class Caderno extends Component{
 
 
 const styles = StyleSheet.create({
-    header: {
-        height: 60,
-
-        marginTop: 15,
-        marginBottom: 15,
-    },
-    
-    logo: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    logoText: {
-        ...dfStyle.text,
-        marginLeft: 10,
-    },
-    
-    empName: {
-        ...dfStyle.text,
-        fontSize: 25,
-    },
-    
-    infoProgram: {
-        ...dfStyle.text,
-        fontSize: 20,
-        marginTop: -8,
-    },
-
     center: {
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
         padding: 10,

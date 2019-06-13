@@ -1,11 +1,15 @@
-import { createStackNavigator, createAppContainer} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import Caderno from './screens/client/caderno';
+import Client from './screens/client/';
 import Fluxo from './screens/manager/fluxo';
 import Login from './screens/login';
 
 
 const AppNavigator = createStackNavigator({
+    Client: {
+        screen: Client
+    },
+    
     Fluxo: {
         screen: Fluxo
     },
@@ -14,9 +18,6 @@ const AppNavigator = createStackNavigator({
         screen: Login
     },
     
-    Caderno: {
-        screen: Caderno
-    },
 
 }, {
     defaultNavigationOptions: {

@@ -14,7 +14,7 @@
       validaUsuario();
 
       switch($_POST['function']){
-         case 'login':
+         case 'signIn':
             include 'login.php';
             break;
 

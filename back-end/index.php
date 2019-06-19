@@ -1,8 +1,5 @@
 <?php
-   require_once('config.php');
-
    header('Content-Type: application/json');
-
    $method = $_SERVER['REQUEST_METHOD'];
 
    if($method == 'GET'){
@@ -11,27 +8,19 @@
    }
 
    if($method == 'POST'){
-      validaUsuario();
+      callMethod('apiAccess');
 
-      switch($_POST['function']){
-         case 'signIn':
-            include 'login.php';
-            break;
+      $method = $_POST['function'];
 
-         default:
-            returnError(404, 'Função não encontrada');
-            break;
+      if(!file_exists("methods/$method.php")){
+         returnError(404, 'Função não encontrada');
       }
+
+      callMethod($method);
    }
 
-   function validaUsuario(){
-      $api = new ApiAccess();
-
-      $validUser = $api->checkValidApi($_POST['apiKey']);
-      if(!$validUser){
-         returnError(401, 'Api não cadastrada');
-         exit();
-      }
+   function callMethod($method){
+      include "methods/$method.php";
    }
    
    function returnError($code, $message){
@@ -45,4 +34,5 @@
       $error->message = $message;
 
       echo json_encode($error);
+      exit();
    }

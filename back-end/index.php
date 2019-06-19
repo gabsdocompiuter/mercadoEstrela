@@ -11,17 +11,11 @@
    }
 
    if($method == 'POST'){
-      $api = new ApiAccess();
-
-      $validUser = $api->checkValidApi($_POST['apiKey']);
-
-      if(!$validUser){
-         returnError(401, 'Api não cadastrada');
-         exit();
-      }
+      validaUsuario();
 
       switch($_POST['function']){
          case 'login':
+            include 'login.php';
             break;
 
          default:
@@ -29,16 +23,26 @@
             break;
       }
    }
-   
-function returnError($code, $message){
-   class ErrorJSON{
-      public $errorCode;
-      public $message;
+
+   function validaUsuario(){
+      $api = new ApiAccess();
+
+      $validUser = $api->checkValidApi($_POST['apiKey']);
+      if(!$validUser){
+         returnError(401, 'Api não cadastrada');
+         exit();
+      }
    }
-   $error = new ErrorJSON();
+   
+   function returnError($code, $message){
+      class ErrorJSON{
+         public $errorCode;
+         public $message;
+      }
+      $error = new ErrorJSON();
 
-   $error->errorCode = $code;
-   $error->message = $message;
+      $error->errorCode = $code;
+      $error->message = $message;
 
-   echo json_encode($error);
-}
+      echo json_encode($error);
+   }

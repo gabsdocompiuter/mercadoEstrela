@@ -11,5 +11,5 @@ if($userDto){
     echo json_encode($userDto);
 }
 else{
-    returnError(401, 'Usuário ou senha inválidos');
+    returnMessage(401, 'Usuário ou senha inválidos');
 }

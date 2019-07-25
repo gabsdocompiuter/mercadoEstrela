@@ -31,4 +31,16 @@ class Usuario extends MySQL{
         }
         return false;
     }
+
+    public function addNewUser($userDto){
+        $sql = "INSERT INTO usuario
+                       VALUES (DEFAULT
+						    , '$userDto->nome'
+						    , '$userDto->cpf'
+						    , '$userDto->email'
+						    , '$userDto->user'
+                            , '$userDto->password');";
+                            
+        return $this->conn->query($sql);
+    }
 }

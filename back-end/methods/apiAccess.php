@@ -5,6 +5,6 @@ $api = new ApiAccess();
 
 $validUser = $api->checkValidApi($_POST['apiKey']);
 if(!$validUser){
-    returnError(401, 'Api não cadastrada');
+    returnMessage(401, 'Api não cadastrada');
 }
  

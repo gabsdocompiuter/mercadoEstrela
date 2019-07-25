@@ -13,7 +13,7 @@
       $method = $_POST['function'];
 
       if(!file_exists("methods/$method.php")){
-         returnError(404, 'Função não encontrada');
+         returnMessage(404, 'Função não encontrada');
       }
 
       callMethod($method);
@@ -23,16 +23,16 @@
       include "methods/$method.php";
    }
    
-   function returnError($code, $message){
-      class ErrorJSON{
-         public $errorCode;
+   function returnMessage($code, $message){
+      class MessageJSON{
+         public $code;
          public $message;
       }
-      $error = new ErrorJSON();
+      $msg = new MessageJSON();
 
-      $error->errorCode = $code;
-      $error->message = $message;
+      $msg->code = $code;
+      $msg->message = $message;
+      echo json_encode($msg);
 
-      echo json_encode($error);
-      exit();
+      if($code >= 400) exit();
    }
